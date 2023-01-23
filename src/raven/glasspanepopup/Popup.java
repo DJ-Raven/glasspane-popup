@@ -8,6 +8,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
 import javax.swing.JComponent;
 import javax.swing.SwingUtilities;
 import net.miginfocom.layout.LayoutCallback;
@@ -21,7 +23,7 @@ import org.jdesktop.animation.timing.TimingTargetAdapter;
  */
 public class Popup extends JComponent {
 
-    private final DecimalFormat df = new DecimalFormat("#.###");
+    private final DecimalFormat df = new DecimalFormat("#.###", DecimalFormatSymbols.getInstance(Locale.US));
     private final GlassPanePopup parent;
     private final Component component;
     private final Option option;
@@ -43,7 +45,7 @@ public class Popup extends JComponent {
         layout = new MigLayout();
         initOption();
         setLayout(layout);
-        add(component);
+        add(component, option.getLayout(parent.getLayerPane(), 0));
     }
 
     private void initOption() {
