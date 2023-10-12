@@ -135,7 +135,7 @@ public class Popup extends JComponent {
     }
     
     private float format(float v){
-        int a=Math.round(v);
-        return a/100;
+        int a=Math.round(v*100);
+        return a/100f;
     }
 }
