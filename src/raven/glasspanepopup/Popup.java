@@ -7,9 +7,6 @@ import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.util.Locale;
 import javax.swing.JComponent;
 import javax.swing.SwingUtilities;
 import net.miginfocom.layout.LayoutCallback;
@@ -23,7 +20,6 @@ import org.jdesktop.animation.timing.TimingTargetAdapter;
  */
 public class Popup extends JComponent {
 
-    private final DecimalFormat df = new DecimalFormat("#.###", DecimalFormatSymbols.getInstance(Locale.US));
     private final GlassPanePopup parent;
     private final Component component;
     private final Option option;
@@ -87,7 +83,7 @@ public class Popup extends JComponent {
                 } else {
                     animate = 1f - fraction;
                 }
-                float f = Float.parseFloat(df.format(animate));
+                float f = format(animate);
                 option.setAnimate(f);
                 String lc = option.getLayout(parent.getLayerPane(), f);
                 if (lc != null) {
@@ -136,5 +132,10 @@ public class Popup extends JComponent {
         g2.fill(new Rectangle2D.Double(0, 0, getWidth(), getHeight()));
         g2.setComposite(AlphaComposite.SrcOver.derive(animate));
         super.paintComponent(g);
+    }
+    
+    private float format(float v){
+        int a=Math.round(v);
+        return a/100;
     }
 }

@@ -57,11 +57,8 @@ public class GlassPanePopup {
         fram.addWindowStateListener(new WindowAdapter() {
             @Override
             public void windowStateChanged(WindowEvent e) {
-                SwingUtilities.invokeLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        instance.updateLayout();
-                    }
+                SwingUtilities.invokeLater(() -> {
+                    instance.updateLayout();
                 });
             }
         });
