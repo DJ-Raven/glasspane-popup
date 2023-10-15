@@ -14,6 +14,8 @@ public interface Option {
 
     public String getLayout(Component parent, float animate);
 
+    public boolean closeWhenPressedEsc();
+
     public boolean closeWhenClickOutside();
 
     public boolean blockBackground();

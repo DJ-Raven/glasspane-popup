@@ -25,6 +25,11 @@ public class DefaultOption implements Option {
     }
 
     @Override
+    public boolean closeWhenPressedEsc() {
+       return true;
+    }
+
+    @Override
     public boolean closeWhenClickOutside() {
         return true;
     }
@@ -46,7 +51,7 @@ public class DefaultOption implements Option {
 
     @Override
     public int duration() {
-        return 300;
+        return 200;
     }
 
     @Override

@@ -4,10 +4,12 @@ import java.awt.AlphaComposite;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
 import javax.swing.JComponent;
+import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
 import net.miginfocom.layout.LayoutCallback;
 import net.miginfocom.swing.MigLayout;
@@ -72,6 +74,9 @@ public class Popup extends JComponent {
             addMouseListener(new MouseAdapter() {
             });
         }
+        if (option.closeWhenPressedEsc()) {
+            registerKeyboardAction(e -> setShowPopup(false), KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_IN_FOCUSED_WINDOW);
+        }
     }
 
     private void initAnimator() {
@@ -117,10 +122,17 @@ public class Popup extends JComponent {
             this.show = show;
             animator.start();
             if (!show) {
-                if (getMouseListeners().length != 0) {
-                    removeMouseListener(getMouseListeners()[0]);
-                }
+                uninstallOption();
             }
+        }
+    }
+
+    private void uninstallOption() {
+        if (getMouseListeners().length != 0) {
+            removeMouseListener(getMouseListeners()[0]);
+        }
+        if (option.closeWhenPressedEsc()) {
+            unregisterKeyboardAction(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0));
         }
     }
 
@@ -133,9 +145,9 @@ public class Popup extends JComponent {
         g2.setComposite(AlphaComposite.SrcOver.derive(animate));
         super.paintComponent(g);
     }
-    
-    private float format(float v){
-        int a=Math.round(v*100);
-        return a/100f;
+
+    private float format(float v) {
+        int a = Math.round(v * 100);
+        return a / 100f;
     }
 }
