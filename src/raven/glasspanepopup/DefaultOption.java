@@ -2,7 +2,6 @@ package raven.glasspanepopup;
 
 import java.awt.Color;
 import java.awt.Component;
-import net.miginfocom.layout.LayoutCallback;
 
 /**
  *
@@ -13,17 +12,17 @@ public class DefaultOption implements Option {
     private float animate;
 
     @Override
-    public LayoutCallback getLayoutCallBack(Component parent) {
-        return new DefaultLayoutCallBack(parent);
-    }
-
-    @Override
     public String getLayout(Component parent, float animate) {
         float an = 20f / parent.getHeight();
         float space = 0.5f + an - (animate * an);
         return "pos 0.5al " + space + "al";
     }
 
+    @Override
+    public boolean useSnapshot() {
+        return true;
+    }
+    
     @Override
     public boolean closeWhenPressedEsc() {
        return true;
@@ -51,7 +50,7 @@ public class DefaultOption implements Option {
 
     @Override
     public int duration() {
-        return 200;
+        return 300;
     }
 
     @Override

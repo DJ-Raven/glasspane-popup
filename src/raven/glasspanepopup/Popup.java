@@ -11,7 +11,6 @@ import java.awt.geom.Rectangle2D;
 import javax.swing.JComponent;
 import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
-import net.miginfocom.layout.LayoutCallback;
 import net.miginfocom.swing.MigLayout;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
@@ -47,10 +46,6 @@ public class Popup extends JComponent {
     }
 
     private void initOption() {
-        LayoutCallback callBack = option.getLayoutCallBack(parent.getLayerPane());
-        if (callBack != null) {
-            layout.addLayoutCallback(callBack);
-        }
         if (option.closeWhenClickOutside()) {
             addMouseListener(new MouseAdapter() {
                 @Override
@@ -99,9 +94,21 @@ public class Popup extends JComponent {
             }
 
             @Override
+            public void begin() {
+                if (option.useSnapshot()) {
+                    FlatAnimatedLafChange.showSnapshot();
+                    parent.contentPane.setVisible(false);
+                }
+            }
+
+            @Override
             public void end() {
                 if (!show) {
                     parent.removePopup(Popup.this);
+                }
+                if (option.useSnapshot()) {
+                    parent.contentPane.setVisible(true);
+                    FlatAnimatedLafChange.hideSnapshotWithAnimation();
                 }
             }
         });

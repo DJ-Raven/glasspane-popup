@@ -48,6 +48,7 @@ public class Message extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(80, 80, 80));
         jLabel1.setText("Your Message Title Dialog Custom");
 
+        txt.setEditable(false);
         txt.setForeground(new java.awt.Color(133, 133, 133));
         txt.setText("This is part of a series of short tutorials about specific elements, components, or interactions. We’ll cover the UX, the UI, and the construction inside of Sketch. Plus, there’s a freebie for you at the end!");
 
@@ -75,7 +76,6 @@ public class Message extends javax.swing.JPanel {
                         .addGap(0, 261, Short.MAX_VALUE))
                     .addComponent(txt, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(cmdCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(cmdOK, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))

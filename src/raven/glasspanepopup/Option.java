@@ -2,7 +2,6 @@ package raven.glasspanepopup;
 
 import java.awt.Color;
 import java.awt.Component;
-import net.miginfocom.layout.LayoutCallback;
 
 /**
  *
@@ -10,10 +9,10 @@ import net.miginfocom.layout.LayoutCallback;
  */
 public interface Option {
 
-    public LayoutCallback getLayoutCallBack(Component parent);
-
     public String getLayout(Component parent, float animate);
 
+    public boolean useSnapshot();
+    
     public boolean closeWhenPressedEsc();
 
     public boolean closeWhenClickOutside();

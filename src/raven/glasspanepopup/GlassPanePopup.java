@@ -2,6 +2,7 @@ package raven.glasspanepopup;
 
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.awt.Container;
 import java.awt.event.MouseAdapter;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -21,6 +22,7 @@ public class GlassPanePopup {
 
     private static GlassPanePopup instance;
     private JLayeredPane layerPane;
+    protected Container contentPane;
 
     private GlassPanePopup() {
         init();
@@ -51,10 +53,11 @@ public class GlassPanePopup {
         }
     }
 
-    public static void install(JFrame fram) {
+    public static void install(JFrame frame) {
         instance = new GlassPanePopup();
-        fram.setGlassPane(instance.layerPane);
-        fram.addWindowStateListener(new WindowAdapter() {
+        instance.contentPane = frame.getContentPane();
+        frame.setGlassPane(instance.layerPane);
+        frame.addWindowStateListener(new WindowAdapter() {
             @Override
             public void windowStateChanged(WindowEvent e) {
                 SwingUtilities.invokeLater(() -> {
