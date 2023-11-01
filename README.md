@@ -49,11 +49,3 @@ GlassPanePopup.closePopupAll();
 #### Screenshot
 
 ![2023-01-05_225048](https://user-images.githubusercontent.com/58245926/210823188-0a5533cf-6c90-4bdd-86dd-b04ea5b95258.png)
-
-For more option you can request
-#### Follow us
-Youtube : https://www.youtube.com/c/HelloWorld-Raven/featured</br>
-Facebook : https://www.facebook.com/profile.php?id=100067430015260
-
-#### Update Note
-- add option `closeWhenPressedEsc` default `true`
