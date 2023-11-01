@@ -46,17 +46,6 @@ GlassPanePopup.closePopup(0);
 //  Close all popup
 GlassPanePopup.closePopupAll();
 ```
-#### How to use layout callback for miglayout
-```java
-Option option = new DefaultOption() {
-    @Override
-    public LayoutCallback getLayoutCallBack(Component parent) {
-        return new DefaultLayoutCallBack(parent) {
-            //  implements your code here...
-        };
-    }
-};
-```
 #### Screenshot
 
 ![2023-01-05_225048](https://user-images.githubusercontent.com/58245926/210823188-0a5533cf-6c90-4bdd-86dd-b04ea5b95258.png)
