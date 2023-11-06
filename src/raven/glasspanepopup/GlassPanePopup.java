@@ -22,6 +22,7 @@ public class GlassPanePopup {
 
     private static GlassPanePopup instance;
     private JLayeredPane layerPane;
+    protected WindowSnapshots windowSnapshots;
     protected Container contentPane;
 
     private GlassPanePopup() {
@@ -55,6 +56,7 @@ public class GlassPanePopup {
 
     public static void install(JFrame frame) {
         instance = new GlassPanePopup();
+        instance.windowSnapshots=new WindowSnapshots(frame);
         instance.contentPane = frame.getContentPane();
         frame.setGlassPane(instance.layerPane);
         frame.addWindowStateListener(new WindowAdapter() {

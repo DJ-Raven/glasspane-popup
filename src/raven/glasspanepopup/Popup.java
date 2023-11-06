@@ -96,7 +96,7 @@ public class Popup extends JComponent {
             @Override
             public void begin() {
                 if (option.useSnapshot()) {
-                    FlatAnimatedLafChange.showSnapshot();
+                    parent.windowSnapshots.createSnapshot();
                     parent.contentPane.setVisible(false);
                 }
             }
@@ -108,7 +108,7 @@ public class Popup extends JComponent {
                 }
                 if (option.useSnapshot()) {
                     parent.contentPane.setVisible(true);
-                    FlatAnimatedLafChange.hideSnapshotWithAnimation();
+                    parent.windowSnapshots.removeSnapshot();
                 }
             }
         });
